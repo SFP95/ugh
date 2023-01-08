@@ -1,8 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:ugh/game/UghGame.dart';
 
-class EmberPlayer extends SpriteAnimationComponent
-    with HasGameRef<UghGame> {
+class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
   EmberPlayer({
     required super.position,
   }) : super(size: Vector2.all(64), anchor: Anchor.center);
