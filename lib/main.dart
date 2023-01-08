@@ -10,7 +10,7 @@ void main() {
       gameFactory: UghGame.new,
     ),
   );
-  /**
+  /** //otra forma de hacerlo
    * final game = UghGame();
       runApp(GameWidget(game: game));
     */
