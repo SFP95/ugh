@@ -13,7 +13,7 @@ class EmberPlayer extends SpriteAnimationComponent
       game.images.fromCache('ember.png'),
       SpriteAnimationData.sequenced(
         amount: 4,
-        textureSize: Vector2.all(16),
+        textureSize: Vector2(16,16),
         stepTime: 0.12,
       ),
     );

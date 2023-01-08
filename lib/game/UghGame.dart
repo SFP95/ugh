@@ -1,4 +1,5 @@
 import 'package:flame/game.dart';
+import 'package:ugh/players/EmberPlayer.dart';
 
 class UghGame extends FlameGame{
 
@@ -16,6 +17,6 @@ class UghGame extends FlameGame{
       'star.png',
       'water_enemy.png',
     ]);
-
+    EmberPlayer emberPlayer = EmberPlayer(position: Vector2(300,300));
   }
 }
