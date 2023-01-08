@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import 'game/UghGame.dart';
 
 void main() {
-  final game = UghGame();
-  runApp(GameWidget(game: game));
+
+  runApp(
+    const GameWidget<UghGame>.controlled(
+      gameFactory: UghGame.new,
+    ),
+  );
+  /**
+   * final game = UghGame();
+      runApp(GameWidget(game: game));
+    */
+
 }
