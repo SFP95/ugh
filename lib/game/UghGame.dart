@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:ugh/players/EmberPlayer.dart';
+import 'package:ugh/players/GotaPlayer.dart';
 
 class UghGame extends FlameGame{
 
@@ -33,7 +34,7 @@ class UghGame extends FlameGame{
          add(estrellaComponent);
          }
     for (final gota in gotas!.objects){
-      EmberPlayer gotaComponent = EmberPlayer(position: Vector2(gota.x,gota.y));
+      GotaPlayer gotaComponent = GotaPlayer(position: Vector2(gota.x,gota.y));
       add(gotaComponent);
     }
 
