@@ -6,7 +6,7 @@ import 'package:flame_tiled/flame_tiled.dart';
 
 import '../game/UghGame.dart';
 
-class SueloBody extends BodyComponent<UghGame>{
+class SueloBody extends BodyComponent{
 
   TiledObject tiledBody;
   SueloBody({required this.tiledBody});

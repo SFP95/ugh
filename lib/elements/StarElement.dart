@@ -20,7 +20,7 @@ class StarElement extends SpriteComponent with HasGameRef<UghGame> {
     //final Image spriteImage;
     //
   }
-
+/*
   @override
   void update(double dt) {
     super.update(dt);
@@ -28,5 +28,5 @@ class StarElement extends SpriteComponent with HasGameRef<UghGame> {
     if (game.health <= 0) {
       removeFromParent();
     }
-  }
+  }*/
 }
