@@ -8,6 +8,8 @@ import 'package:ugh/elements/StarElement.dart';
 import 'package:ugh/players/EmberPlayer.dart';
 import 'package:ugh/players/GotaPlayer.dart';
 
+import '../bodies/SueloBody.dart';
+
 class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
   late TiledComponent mapComponent;
   int verticalDirection = 0;
