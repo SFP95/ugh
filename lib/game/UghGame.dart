@@ -27,10 +27,12 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
       'star.png',
       'water_enemy.png',
     ]);
+
     //carcago de mapa
     TiledComponent mapComponent = await TiledComponent.load(
         "mapa.tmx", Vector2(32, 32));
     add(mapComponent);
+
     //cargado de jugados ember
     EmberPlayer emberPlayer= EmberPlayer(position: Vector2(300,300));
     add(emberPlayer);
