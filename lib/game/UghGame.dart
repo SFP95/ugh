@@ -40,11 +40,6 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     ObjectGroup? gotas = mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
     ObjectGroup? posinitplayer = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer");
 
-    //fondo de pantalla
-    @override
-    Color backgroundColor() {
-      return const Color.fromARGB(255, 173, 223, 247);
-    }
 
     // posición de los enemigos y estrellas
     for (final estrella in estrellas!.objects) {
@@ -62,5 +57,10 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     //cargado de jugados ember
     EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     add(emberPlayer);
+  }
+  //fondo de pantalla
+  @override
+  Color backgroundColor() {
+    return const Color.fromARGB(255, 173, 223, 247);
   }
 }
