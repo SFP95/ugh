@@ -50,7 +50,7 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     }
 
     for (final gota in gotas!.objects) {
-      GotaPlayer gotaComponent = GotaPlayer(position: Vector2(gota.x-0.5, gota.y));
+      GotaPlayer gotaComponent = GotaPlayer(position: Vector2(gota.x-1, gota.y));
       objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
