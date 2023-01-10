@@ -18,3 +18,4 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
     );
   }
 }
+
