@@ -33,14 +33,12 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
         "mapa.tmx", Vector2(32, 32));
     add(mapComponent);
 
-    //cargado de jugados ember
-    EmberPlayer emberPlayer= EmberPlayer(position: Vector2(300,300));
-    add(emberPlayer);
 
-    //cargado de gotas enemigo sy objetos estrella
+    //cargado de gotas enemigos y objetos estrella + initplayer
     ObjectGroup? estrellas = mapComponent.tileMap.getLayer<ObjectGroup>(
         "estrellas");
     ObjectGroup? gotas = mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
+    ObjectGroup? posinitplayer = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer");
 
     //fondo de pantalla
     @override
@@ -61,5 +59,8 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
       objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
+    //cargado de jugados ember
+    EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
+    add(emberPlayer);
   }
 }
