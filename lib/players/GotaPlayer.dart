@@ -1,4 +1,6 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:ugh/game/UghGame.dart';
 
 class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
@@ -14,6 +16,19 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
         amount: 2,
         textureSize: Vector2(16,16),
         stepTime: 0.12,
+      ),
+    );
+
+    //movimiento del enemigo
+    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    add(
+      MoveEffect.by(
+        Vector2(-1 * size.x, 0),
+        EffectController(
+          duration: 3,
+          alternate: true,
+          infinite: true,
+        ),
       ),
     );
   }
