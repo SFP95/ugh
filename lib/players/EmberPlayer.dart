@@ -1,7 +1,9 @@
 import 'package:flame/components.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:ugh/game/UghGame.dart';
 
-class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
+class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler {
   EmberPlayer({
     required super.position,
   }) : super(size: Vector2.all(64), anchor: Anchor.center);
@@ -16,6 +18,12 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
         stepTime: 0.12,
       ),
     );
+  }
+  @override
+  bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    //print("DEBUG: ----------->>>>>>>> BOTON PRESIONADO: "+keysPressed.toString());
+
+    return true;
   }
 }
 
