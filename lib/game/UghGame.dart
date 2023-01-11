@@ -62,10 +62,6 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x-65,posinitplayer!.objects.first.y));
     add(emberPlayer2);
 
-    /*if(emberPlayer.position==emberPlayer2.position){
-      emberPlayer.hit!();
-      emberPlayer2.hit!();
-    }*/ //intento de hacer que al estar en la misma posicion inicial no se ataquen entre ellos, pero no funciona
   }
   //fondo de pantalla
   @override

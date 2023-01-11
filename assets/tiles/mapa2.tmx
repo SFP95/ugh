@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.5" tiledversion="2021.03.23" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="32">
- <tileset firstgid="1" source="act4/ugh-master/assets/tiles/platformer_32_full.tsx"/>
- <tileset firstgid="136" source="tilesetOpenGame.tsx"/>
+ <tileset firstgid="1" source="tilesetOpenGame.tsx"/>
  <layer id="1" name="Tile Layer 1" width="40" height="30">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
