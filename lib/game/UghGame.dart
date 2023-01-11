@@ -9,6 +9,7 @@ import 'package:ugh/players/EmberPlayer.dart';
 import 'package:ugh/players/GotaPlayer.dart';
 
 import '../bodies/SueloBody.dart';
+import '../players/EmberPlayer2.dart';
 
 class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDetection{
 
@@ -54,9 +55,12 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
       objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
-    //cargado de jugados ember
+    //cargado de jugador ember ( que se mueve con los botones: A, W, D, S) y ember 2 ( que se mueve con los botones: J, I, L, K)
     EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     add(emberPlayer);
+
+    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
+    add(emberPlayer2);
   }
   //fondo de pantalla
   @override
