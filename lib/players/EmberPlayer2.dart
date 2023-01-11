@@ -17,6 +17,9 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
 
+  late CircleHitbox hitbox;
+  bool hitByEnemy = false;
+
   EmberPlayer2({
     required super.position,
   }) : super(size: Vector2.all(64), anchor: Anchor.center);
@@ -31,6 +34,10 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
         stepTime: 0.12,
       ),
     );
+
+    //cuerpo para colisiones
+    hitbox=CircleHitbox();
+    add(hitbox);
   }
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -61,13 +68,14 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
 
   //DETECCION DE COLISIONES
 
+
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     print("DEBUG: COLLISION EMBER-2!!!!!!! ");
 
     if (other is StarElement) {
       other.removeFromParent();
-      game.starsCollected++;
+     // game.starsCollected++;
     }
 
     if (other is GotaPlayer) {
@@ -83,7 +91,7 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-      game.health--;
+     // game.health--;
       add(
         OpacityEffect.fadeOut(
           EffectController(

@@ -15,8 +15,8 @@ class StarElement extends SpriteComponent with HasGameRef<UghGame> {
     final platformImage = game.images.fromCache('star.png');
     sprite = Sprite(platformImage);
 
-    add(RectangleHitbox()
-      ..collisionType = CollisionType.passive);
+    add(RectangleHitbox()..collisionType = CollisionType.passive);
+
     //final Image spriteImage;
     //
   }
