@@ -31,7 +31,7 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
 
     //carcago de mapa
     TiledComponent mapComponent = await TiledComponent.load(
-        "mapa.tmx", Vector2(32, 32));
+        "mapa2.tmx", Vector2(32, 32));
     add(mapComponent);
 
 
@@ -40,7 +40,7 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
         "estrellas");
     ObjectGroup? gotas = mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
     ObjectGroup? posinitplayer = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer");
-
+    ObjectGroup? posinitplayer2 = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer2");
 
     // posición de los enemigos y estrellas
     for (final estrella in estrellas!.objects) {
@@ -59,7 +59,7 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     add(emberPlayer);
 
-    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer!.objects.first.x-65,posinitplayer!.objects.first.y));
+    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x-65,posinitplayer!.objects.first.y));
     add(emberPlayer2);
 
     /*if(emberPlayer.position==emberPlayer2.position){
