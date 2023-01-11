@@ -1,9 +1,15 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:ugh/game/UghGame.dart';
 
-class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler {
+import '../elements/StarElement.dart';
+import 'EmberPlayer.dart';
+import 'GotaPlayer.dart';
+
+class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler,CollisionCallbacks {
 
   int horizontalDirection = 0;
   int vertivalDirection = 0;
@@ -50,8 +56,47 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
         keysPressed.contains(LogicalKeyboardKey.arrowDown))){
       vertivalDirection=1;
     }
-
     return true;
+  }
+
+  //DETECCION DE COLISIONES
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    print("DEBUG: COLLISION EMBER-2!!!!!!! ");
+
+    if (other is StarElement) {
+      other.removeFromParent();
+      game.starsCollected++;
+    }
+
+    if (other is GotaPlayer) {
+      hit();
+    }
+
+    if(other is EmberPlayer){
+      hit();
+    }
+    super.onCollision(intersectionPoints, other);
+  }
+
+  void hit() {
+    if (!hitByEnemy) {
+      hitByEnemy = true;
+      game.health--;
+      add(
+        OpacityEffect.fadeOut(
+          EffectController(
+            alternate: true,
+            duration: 0.1,
+            repeatCount: 6,
+          ),
+        )..onComplete = () {
+          hitByEnemy = false;
+        },
+      );
+
+    }
   }
 
   @override
