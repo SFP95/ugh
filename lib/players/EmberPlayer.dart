@@ -5,9 +5,11 @@ import 'package:ugh/game/UghGame.dart';
 
 class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler {
 
-  int horizontalDirection=0;
-  int vertivalDirection=0;
+  int horizontalDirection = 0;
+  int vertivalDirection = 0;
 
+  final Vector2 velocity = Vector2.zero();
+  final double moveSpeed = 200;
 
   EmberPlayer({
     required super.position,
@@ -30,22 +32,22 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
     horizontalDirection=0;
     vertivalDirection=0;
 
-    if(keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft)){
+    if((keysPressed.contains(LogicalKeyboardKey.keyA) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowLeft))){
       horizontalDirection=-1;
     }
-
-    if(keysPressed.contains(LogicalKeyboardKey.keyD) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight)){
+    else if((keysPressed.contains(LogicalKeyboardKey.keyD) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowRight))){
       horizontalDirection=1;
     }
-    if(keysPressed.contains(LogicalKeyboardKey.keyW) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowUp)){
+
+
+    if((keysPressed.contains(LogicalKeyboardKey.keyW) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowUp))){
       vertivalDirection=-1;
     }
-
-    if(keysPressed.contains(LogicalKeyboardKey.keyS) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowDown)){
+    else if((keysPressed.contains(LogicalKeyboardKey.keyS) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowDown))){
       vertivalDirection=1;
     }
 
@@ -54,8 +56,17 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
 
   @override
   void update(double dt) {
-    position.add(Vector2(10.0*horizontalDirection, 0));
+    //position.add(Vector2(10.0*horizontalDirection, 0));
+    velocity.x=horizontalDirection * moveSpeed;
+    position += velocity * dt;
     super.update(dt);
+
+    //cambiar dirección imagen de embar segun direccion
+    if(horizontalDirection < 0 && scale.x > 0){
+      flipHorizontally();
+    }else if(horizontalDirection > 0 && scale.x < 0){
+      flipHorizontally();
+    }
   }
 }
 
