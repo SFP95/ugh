@@ -6,6 +6,7 @@ import 'package:ugh/game/UghGame.dart';
 class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler {
 
   int horizontalDirection=0;
+  int vertivalDirection=0;
 
 
   EmberPlayer({
@@ -27,20 +28,33 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     //print("DEBUG: ----------->>>>>>>> BOTON PRESIONADO: "+keysPressed.toString());
     horizontalDirection=0;
-    horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyA) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowLeft))
-        ? -1
-        : 0;
-    horizontalDirection += (keysPressed.contains(LogicalKeyboardKey.keyB) ||
-        keysPressed.contains(LogicalKeyboardKey.arrowRight))
-        ? 1
-        : 0;
+    vertivalDirection=0;
+
+    if(keysPressed.contains(LogicalKeyboardKey.keyA) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowLeft)){
+      horizontalDirection=-1;
+    }
+
+    if(keysPressed.contains(LogicalKeyboardKey.keyD) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowRight)){
+      horizontalDirection=1;
+    }
+    if(keysPressed.contains(LogicalKeyboardKey.keyW) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowUp)){
+      vertivalDirection=-1;
+    }
+
+    if(keysPressed.contains(LogicalKeyboardKey.keyS) ||
+        keysPressed.contains(LogicalKeyboardKey.arrowDown)){
+      vertivalDirection=1;
+    }
+
     return true;
   }
 
   @override
   void update(double dt) {
-    position.add(Vector2(10, 0));
+    position.add(Vector2(10.0*horizontalDirection, 0));
     super.update(dt);
   }
 }
