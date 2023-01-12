@@ -10,6 +10,7 @@ import 'package:ugh/players/EmberPlayer.dart';
 import 'package:ugh/players/GotaPlayer.dart';
 
 import '../bodies/SueloBody.dart';
+import '../overlays/hud.dart';
 import '../players/EmberPlayer2.dart';
 
 class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
@@ -21,6 +22,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
   int starsCollected = 0;
   int health = 3;
   late EmberBody _emberBody;
+  late EmberBody2 _emberBody2;
 
   List<PositionComponent>  objetosVisuales=[];
 
@@ -43,6 +45,11 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
         "mapa2.tmx", Vector2(32, 32));
     add(mapComponent);
 
+  }
+
+  void initializeGame (bool loadHud) async{
+    objetosVisuales.clear();
+    mapComponent.position=Vector2(0, 0);
 
     //cargado de gotas enemigos y objetos estrella + initplayer
     ObjectGroup? estrellas = mapComponent.tileMap.getLayer<ObjectGroup>(
@@ -64,17 +71,27 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
       objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
+
     //cargado de jugador ember ( que se mueve con los botones: A, W, D, S) y ember 2 ( que se mueve con los botones: J, I, L, K)
-    EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
-    add(emberPlayer);
+    _emberBody= EmberBody(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
+    add(_emberBody);
 
-    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
-    add(emberPlayer2);
+    _emberBody2= EmberBody2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
+    add(_emberBody2);
 
+    if(loadHud){
+      add(Hud());
+    }
   }
+
+
   //fondo de pantalla
   @override
   Color backgroundColor() {
     return const Color.fromARGB(255, 173, 223, 247);
+  }
+  void setDirection(int horizontalDirection, int verticalDirection){
+    this.horizontalDirection=horizontalDirection;
+    this.verticalDirection=verticalDirection;
   }
 }

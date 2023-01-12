@@ -154,7 +154,7 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
 
     if (other is StarElement) {
       other.removeFromParent();
-     // game.starsCollected++;
+      game.starsCollected++;
     }
 
     if (other is GotaPlayer) {
