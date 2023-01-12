@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:ugh/elements/StarElement.dart';
 import 'package:ugh/players/EmberPlayer.dart';
@@ -11,7 +12,7 @@ import 'package:ugh/players/GotaPlayer.dart';
 import '../bodies/SueloBody.dart';
 import '../players/EmberPlayer2.dart';
 
-class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDetection{
+class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
 
   List<PositionComponent>  objetosVisuales=[];
 
