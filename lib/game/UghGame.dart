@@ -26,6 +26,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
 
   List<PositionComponent>  objetosVisuales=[];
 
+  UghGame():super(zoom: 1.1);
 
   @override
   Future<void> onLoad() async {
@@ -41,8 +42,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     ]);
 
     //carcago de mapa
-    TiledComponent mapComponent = await TiledComponent.load(
-        "mapa2.tmx", Vector2(32, 32));
+    mapComponent = await TiledComponent.load("mapa2.tmx", Vector2(32, 32));
     add(mapComponent);
 
   }
