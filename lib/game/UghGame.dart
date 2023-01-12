@@ -59,7 +59,7 @@ class UghGame extends FlameGame with HasKeyboardHandlerComponents,HasCollisionDe
     EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     add(emberPlayer);
 
-    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x-65,posinitplayer!.objects.first.y));
+    EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     add(emberPlayer2);
 
   }
