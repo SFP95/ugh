@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:ugh/game/UghGame.dart';
 import 'package:ugh/players/EmberPlayer2.dart';
-
 import '../elements/StarElement.dart';
 import 'GotaPlayer.dart';
 
@@ -104,7 +103,6 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     center.add((velocity * dt));
 
     if (horizontalDirection < 0 && emberPlayer.scale.x > 0) {
-
       emberPlayer.flipHorizontallyAroundCenter();
     } else if (horizontalDirection > 0 && emberPlayer.scale.x < 0) {
       //flipAxisDirection(AxisDirection.left);
