@@ -47,6 +47,17 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
 
   }
 
+  //fondo de pantalla
+  @override
+  Color backgroundColor() {
+    return const Color.fromARGB(255, 173, 223, 247);
+  }
+
+  void setDirection(int horizontalDirection, int verticalDirection){
+    this.horizontalDirection=horizontalDirection;
+    this.verticalDirection=verticalDirection;
+  }
+
   void initializeGame (bool loadHud) async{
     objetosVisuales.clear();
     mapComponent.position=Vector2(0, 0);
@@ -57,6 +68,12 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     ObjectGroup? gotas = mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
     ObjectGroup? posinitplayer = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer");
     ObjectGroup? posinitplayer2 = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer2");
+    ObjectGroup? suelos = mapComponent.tileMap.getLayer<ObjectGroup>("suelos");
+
+    for(final suelo in suelos!.objects){
+      SueloBody body=SueloBody(tiledBody: suelo);
+      add(body);
+    }
 
     // posición de los enemigos y estrellas
     for (final estrella in estrellas!.objects) {
@@ -84,14 +101,33 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     }
   }
 
+  void reset(){
+    starsCollected=0;
+    health=3;
+    initializeGame(false);
+  }
+  /*
+  void joypadMoved(Direction direction){
+    //print("JOYPAD EN MOVIMIENTO:   ---->  "+direction.toString());
 
-  //fondo de pantalla
-  @override
-  Color backgroundColor() {
-    return const Color.fromARGB(255, 173, 223, 247);
-  }
-  void setDirection(int horizontalDirection, int verticalDirection){
-    this.horizontalDirection=horizontalDirection;
-    this.verticalDirection=verticalDirection;
-  }
+    horizontalDirection=0;
+    verticalDirection=0;
+
+    if(direction==Direction.left){
+      horizontalDirection=-1;
+    }
+    else if(direction==Direction.right){
+      horizontalDirection=1;
+    }
+
+
+    if(direction==Direction.up){
+      verticalDirection=-1;
+    }
+    else if(direction==Direction.down){
+      verticalDirection=1;
+    }
+
+    _emberBody.horizontalDirection=horizontalDirection;
+  }*/
 }
