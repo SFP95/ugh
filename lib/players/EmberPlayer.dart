@@ -109,11 +109,10 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
       emberPlayer.flipHorizontallyAroundCenter();
     }
 
-    // if (position.x < -size.x || game.health <= 0) {
-    //   game.setDirection(0,0);
-    //   removeFromParent();
-    //
-    // }
+     if (position.x < -size.x || game.health <= 0) {
+       game.setDirection(0,0);
+       removeFromParent();
+     }
 
     super.update(dt);
   }

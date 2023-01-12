@@ -1,6 +1,7 @@
+import 'dart:ui';
 import 'package:flame/components.dart';
-
 import '../game/UghGame.dart';
+import 'HeartHealthComponent.dart';
 
 class Hud extends PositionComponent with HasGameRef<UghGame> {
   Hud({

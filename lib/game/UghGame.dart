@@ -13,6 +13,14 @@ import '../bodies/SueloBody.dart';
 import '../players/EmberPlayer2.dart';
 
 class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
+  late TiledComponent mapComponent;
+  int verticalDirection = 0;
+  int horizontalDirection = 0;
+  final Vector2 velocity = Vector2.zero();
+  final double moveSpeed = 200;
+  int starsCollected = 0;
+  int health = 3;
+  late EmberBody _emberBody;
 
   List<PositionComponent>  objetosVisuales=[];
 

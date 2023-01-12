@@ -101,13 +101,13 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     } else if (horizontalDirection > 0 && emberPlayer2.scale.x < 0) {
       emberPlayer2.flipHorizontallyAroundCenter();
     }
-/*
+
     if (position.x < -size.x || game.health <= 0) {
       game.setDirection(0,0);
       removeFromParent();
 
     }
-*/
+
     super.update(dt);
   }
 
@@ -167,7 +167,7 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-     // game.health--;
+      game.health--;
       add(
         OpacityEffect.fadeOut(
           EffectController(
