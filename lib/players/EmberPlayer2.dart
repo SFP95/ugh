@@ -97,9 +97,12 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     center.add((velocity * dt));
 
     if (horizontalDirection < 0 && emberPlayer2.scale.x > 0) {
+
       emberPlayer2.flipHorizontallyAroundCenter();
+      //flipAxisDirection(AxisDirection.left);
     } else if (horizontalDirection > 0 && emberPlayer2.scale.x < 0) {
       emberPlayer2.flipHorizontallyAroundCenter();
+      //flipAxisDirection(AxisDirection.left);
     }
 
     if (position.x < -size.x || game.health <= 0) {
