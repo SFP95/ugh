@@ -41,7 +41,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2;
+    shape.radius=size.x/2.2;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,
@@ -53,11 +53,11 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     return cuerpo;
   }
 
-  @override
-  void onMount() {
-    super.onMount();
-    camera.followBodyComponent(this);
-  }
+  // @override
+  // void onMount() {
+  //   super.onMount();
+  //   camera.followBodyComponent(this);
+  // }
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -65,21 +65,21 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     horizontalDirection = 0;
     verticalDirection = 0;
 
-    if((keysPressed.contains(LogicalKeyboardKey.keyA) ||
+    if((keysPressed.contains(LogicalKeyboardKey.keyJ) ||
         keysPressed.contains(LogicalKeyboardKey.arrowLeft))){
       horizontalDirection=-1;
     }
-    else if((keysPressed.contains(LogicalKeyboardKey.keyD) ||
+    else if((keysPressed.contains(LogicalKeyboardKey.keyL) ||
         keysPressed.contains(LogicalKeyboardKey.arrowRight))){
       horizontalDirection=1;
     }
 
 
-    if((keysPressed.contains(LogicalKeyboardKey.keyW) ||
+    if((keysPressed.contains(LogicalKeyboardKey.keyI) ||
         keysPressed.contains(LogicalKeyboardKey.arrowUp))){
       verticalDirection=-1;
     }
-    else if((keysPressed.contains(LogicalKeyboardKey.keyS) ||
+    else if((keysPressed.contains(LogicalKeyboardKey.keyK) ||
         keysPressed.contains(LogicalKeyboardKey.arrowDown))){
       verticalDirection=1;
     }
@@ -136,7 +136,6 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
     );
 
     //cuerpo para colisiones
-    //.radius=size.x/2
     hitbox=CircleHitbox();
     add(hitbox);
   }

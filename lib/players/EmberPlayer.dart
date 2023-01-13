@@ -40,7 +40,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2;
+    shape.radius=size.x/2.2;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,
@@ -54,11 +54,11 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     return cuerpo;
   }
 
-  @override
-  void onMount() {
-    super.onMount();
-    camera.followBodyComponent(this);
-  }
+  // @override
+  // void onMount() {
+  //   super.onMount();
+  //   camera.followBodyComponent(this);
+  // }
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -171,7 +171,7 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-      //game.health--;
+      game.health--;
       add(
         OpacityEffect.fadeOut(
           EffectController(
