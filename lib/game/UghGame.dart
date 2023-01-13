@@ -12,6 +12,7 @@ import 'package:ugh/players/GotaPlayer.dart';
 import '../bodies/SueloBody.dart';
 import '../overlays/hud.dart';
 import '../players/EmberPlayer2.dart';
+import '../ux/joypad.dart';
 
 class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
   late TiledComponent mapComponent;
@@ -63,8 +64,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     mapComponent.position=Vector2(0, 0);
 
     //cargado de gotas enemigos y objetos estrella + initplayer
-    ObjectGroup? estrellas = mapComponent.tileMap.getLayer<ObjectGroup>(
-        "estrellas");
+    ObjectGroup? estrellas = mapComponent.tileMap.getLayer<ObjectGroup>("estrellas");
     ObjectGroup? gotas = mapComponent.tileMap.getLayer<ObjectGroup>("gotas");
     ObjectGroup? posinitplayer = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer");
     ObjectGroup? posinitplayer2 = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer2");
@@ -106,7 +106,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     health=3;
     initializeGame(false);
   }
-  /*
+
   void joypadMoved(Direction direction){
     //print("JOYPAD EN MOVIMIENTO:   ---->  "+direction.toString());
 
@@ -129,5 +129,5 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     }
 
     _emberBody.horizontalDirection=horizontalDirection;
-  }*/
+  }
 }
