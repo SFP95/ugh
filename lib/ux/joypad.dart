@@ -22,7 +22,7 @@ class JoypadState extends State<Joypad> {
     return Material(
         color: Colors.transparent,
         child: Align(
-            alignment: Alignment.bottomRight,
+            alignment: Alignment.centerLeft,
             child: SizedBox(
               height: 120,
               width: 120,
