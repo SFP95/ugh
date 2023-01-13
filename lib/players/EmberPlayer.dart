@@ -86,7 +86,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
       verticalDirection=1;
     }
 
-   // game.setDirection(horizontalDirection,verticalDirection);
+    game.setDirection(horizontalDirection,verticalDirection);
 
 
     return true;

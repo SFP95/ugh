@@ -11,7 +11,7 @@ class SueloBody extends BodyComponent{
   @override
   Future<void> onLoad() {
     // TODO: implement onLoad
-    renderBody=true;
+    renderBody=false;
     return super.onLoad();
   }
 
