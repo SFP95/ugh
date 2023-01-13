@@ -130,4 +130,5 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
 
     _emberBody.horizontalDirection=horizontalDirection;
   }
+
 }
