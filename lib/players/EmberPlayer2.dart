@@ -135,9 +135,9 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
       ),
     );
 
-    //cuerpo para colisiones
-    hitbox=CircleHitbox();
-    add(hitbox);
+    // //cuerpo para colisiones
+    // hitbox=CircleHitbox();
+    // add(hitbox);
   }
 
 
