@@ -92,9 +92,14 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     //cargado de jugador ember ( que se mueve con los botones: A, W, D, S) y ember 2 ( que se mueve con los botones: J, I, L, K)
     _emberBody= EmberBody(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     add(_emberBody);
+    // EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
+    // add(emberPlayer);
+
 
     _emberBody2= EmberBody2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     add(_emberBody2);
+    // EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
+    // add(emberPlayer2);
 
     if(loadHud){
       add(Hud());
@@ -128,7 +133,8 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
       verticalDirection=1;
     }
 
-    _emberBody.horizontalDirection=horizontalDirection;
+    //_emberBody.horizontalDirection=horizontalDirection;
+    //_emberBody2.horizontalDirection=horizontalDirection;
   }
 
 }

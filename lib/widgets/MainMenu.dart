@@ -46,7 +46,7 @@ class MainMenu extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     game.overlays.remove('MainMenu');
-                    game.overlays.add('Joypad');
+                   // game.overlays.add('Joypad');
                     game.initializeGame(true);
                   },
                   style: ElevatedButton.styleFrom(

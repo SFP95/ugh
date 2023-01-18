@@ -41,7 +41,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2.2;
+    shape.radius=size.x/2.7;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,
@@ -149,7 +149,7 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
 
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    print("DEBUG: COLLISION EMBER-2!!!!!!! ");
+    print("DEBUG: COLLISION EMBER - 2!!!!!!! ");
 
     if (other is StarElement) {
       other.removeFromParent();

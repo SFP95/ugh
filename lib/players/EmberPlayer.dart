@@ -40,7 +40,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2.2;
+    shape.radius=size.x/2.7;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,

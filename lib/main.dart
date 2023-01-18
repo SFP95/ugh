@@ -13,7 +13,7 @@ void main() {
       overlayBuilderMap: {
         'MainMenu': (_, game) => MainMenu(game: game),
         'GameOver': (_, game) => GameOver(game: game),
-        'Joypad': (_, game) => Joypad(onDirectionChanged: game.joypadMoved),
+        //'Joypad': (_, game) => Joypad(onDirectionChanged: game.joypadMoved),
       },
       initialActiveOverlays: const ['MainMenu'],
     ),
