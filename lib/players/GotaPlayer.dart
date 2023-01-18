@@ -11,6 +11,12 @@ class GotaBody extends BodyComponent<UghGame>{
 
   Vector2 posxY;
   Vector2 tamWH;
+  Vector2 xIni
+  Vector2 xFin;
+  Vector2 xContador;
+
+
+
 
   GotaBody({required this.posxY,required this.tamWH}):super();
 
@@ -19,7 +25,7 @@ class GotaBody extends BodyComponent<UghGame>{
     BodyDef bodyDef = BodyDef(type: BodyType.dynamic, position: posxY);
     Body cuerpo= world.createBody(bodyDef);
     CircleShape shape= CircleShape();
-    shape.radius=tamWH.x/2;
+    shape.radius=tamWH.x;
     cuerpo.createFixtureFromShape(shape);
     return world.createBody(bodyDef);
 
@@ -29,8 +35,20 @@ class GotaBody extends BodyComponent<UghGame>{
     // TODO: implement onLoad
     await super.onLoad();
 
-    GotaPlayer gotaPlayer = GotaPlayer(position: Vector2.zero());
+    GotaPlayer gotaPlayer = GotaPlayer(position: Vector2.zero(),size: tamWH);
     add(gotaPlayer);
+    xIni=posxY.x;
+    xFin=(20);
+    xContador=0;
+  }
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    if(xContador>xFin){
+      xContador=xContador-0.2;
+      super.add(Vector2(xContador, 0));
+    }
   }
 
 }
@@ -39,8 +57,8 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
 
 
   GotaPlayer({
-    required super.position,
-  }) : super(size: Vector2.all(64), anchor: Anchor.center);
+    required super.position,required super.size,
+  }) : super( anchor: Anchor.center);
 
   @override
   Future<void> onLoad() async {
