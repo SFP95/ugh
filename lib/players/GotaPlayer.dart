@@ -1,9 +1,24 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame_forge2d/body_component.dart';
+import 'package:forge2d/src/dynamics/body.dart';
 import 'package:ugh/game/UghGame.dart';
 
+
+class GotaBody extends BodyComponent{
+
+  @override
+  Body createBody() {
+    // TODO: implement createBody
+    throw UnimplementedError();
+  }
+
+}
+
 class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
+
+
   GotaPlayer({
     required super.position,
   }) : super(size: Vector2.all(64), anchor: Anchor.center);
