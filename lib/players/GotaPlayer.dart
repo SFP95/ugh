@@ -2,16 +2,31 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame_forge2d/body_component.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import 'package:forge2d/src/dynamics/body.dart';
 import 'package:ugh/game/UghGame.dart';
 
 
-class GotaBody extends BodyComponent{
+class GotaBody extends BodyComponent<UghGame>{
+
+  Vector2 posxY;
+
+  GotaBody({required this.posxY}):super();
 
   @override
   Body createBody() {
-    // TODO: implement createBody
-    throw UnimplementedError();
+    BodyDef bodyDef = BodyDef(type: BodyType.dynamic, position: posxY);
+
+    return world.createBody(bodyDef);
+
+  }
+  @override
+  Future<void> onLoad() async {
+    // TODO: implement onLoad
+    await super.onLoad();
+
+    GotaPlayer gotaPlayer = GotaPlayer(position: Vector2.zero());
+    add(gotaPlayer);
   }
 
 }

@@ -84,8 +84,8 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     }
 
     for (final gota in gotas!.objects) {
-      GotaPlayer gotaComponent = GotaPlayer(position: Vector2(gota.x-1, gota.y));
-      objetosVisuales.add(gotaComponent);
+      GotaBody gotaComponent = GotaBody(posxY: Vector2(gota.x-1, gota.y));
+      //objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
 
