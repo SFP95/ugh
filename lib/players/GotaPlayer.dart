@@ -10,13 +10,17 @@ import 'package:ugh/game/UghGame.dart';
 class GotaBody extends BodyComponent<UghGame>{
 
   Vector2 posxY;
+  Vector2 tamWH;
 
-  GotaBody({required this.posxY}):super();
+  GotaBody({required this.posxY,required this.tamWH}):super();
 
   @override
   Body createBody() {
     BodyDef bodyDef = BodyDef(type: BodyType.dynamic, position: posxY);
-
+    Body cuerpo= world.createBody(bodyDef);
+    CircleShape shape= CircleShape();
+    shape.radius=tamWH.x/2;
+    cuerpo.createFixtureFromShape(shape);
     return world.createBody(bodyDef);
 
   }
