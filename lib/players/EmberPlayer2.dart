@@ -21,6 +21,8 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
   double jumpSpeed=0;
+  double iShowDelay=5;
+  bool elementAdded=false;
 
   EmberBody2({required this.position});
 
@@ -32,16 +34,20 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     emberPlayer2.size=size;
     add(emberPlayer2);
     renderBody=true;
+
+    //game.overlays.addEntry('Joypad', (_, game) => Joypad(onDirectionChanged:joypadMoved));
+
   }
 
   @override
   Body createBody() {
     // TODO: implement createBody
-    BodyDef definicionCuerpo= BodyDef(position: position,type: BodyType.dynamic);
+    BodyDef definicionCuerpo= BodyDef(
+        position: position,type: BodyType.dynamic,fixedRotation: true);
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2.7;
+    shape.radius=size.x/2;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,
@@ -83,7 +89,8 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
         keysPressed.contains(LogicalKeyboardKey.arrowDown))){
       verticalDirection=1;
     }
-    //game.setDirection(horizontalDirection,verticalDirection);
+    game.setDirection(horizontalDirection,verticalDirection);
+
     return true;
   }
 

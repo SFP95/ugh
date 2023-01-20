@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:ugh/game/UghGame.dart';
 import 'package:ugh/players/EmberPlayer2.dart';
 import '../elements/StarElement.dart';
+import '../ux/joypad.dart';
 import 'GotaPlayer.dart';
 
 
@@ -19,6 +20,8 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
   double jumpSpeed=0;
+  double iShowDelay=5;
+  bool elementAdded=false;
 
   EmberBody({required this.position});
 
@@ -31,16 +34,18 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     add(emberPlayer);
     renderBody=true;
 
+    //game.overlays.addEntry('Joypad', (_, game) => Joypad(onDirectionChanged:joypadMoved));
   }
 
   @override
   Body createBody() {
     // TODO: implement createBody
-    BodyDef definicionCuerpo= BodyDef(position: position,type: BodyType.dynamic);
+    BodyDef definicionCuerpo= BodyDef(
+        position: position,type: BodyType.dynamic,fixedRotation: true);
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
-    shape.radius=size.x/2.7;
+    shape.radius=size.x/2;
 
     FixtureDef fixtureDef=FixtureDef(
         shape,
@@ -87,7 +92,6 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     }
 
     game.setDirection(horizontalDirection,verticalDirection);
-
 
     return true;
   }
