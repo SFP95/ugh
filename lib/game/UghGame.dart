@@ -54,6 +54,14 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     return const Color.fromARGB(255, 173, 223, 247);
   }
 
+  @override
+  void update(double dt) {
+    if (health<=0){
+      overlays.add("GameOver");
+    }
+    super. update(dt);
+  }
+
   void setDirection(int horizontalDirection, int verticalDirection){
     this.horizontalDirection=horizontalDirection;
     this.verticalDirection=verticalDirection;
@@ -84,7 +92,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     }
 
     for (final gota in gotas!.objects) {
-      GotaBody gotaComponent = GotaBody(posxY: Vector2(gota.x-1, gota.y),tamWH: Vector2(50,50));
+      GotaBody gotaComponent = GotaBody(posxY: Vector2(gota.x-1, gota.y),tamWH: Vector2(64,64));
       //objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
@@ -112,29 +120,31 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     initializeGame(false);
   }
 
-  void joypadMoved(Direction direction){
-    //print("JOYPAD EN MOVIMIENTO:   ---->  "+direction.toString());
+  // PARA PODER MOVERLO CON EL JOYPAD
 
-    horizontalDirection=0;
-    verticalDirection=0;
-
-    if(direction==Direction.left){
-      horizontalDirection=-1;
-    }
-    else if(direction==Direction.right){
-      horizontalDirection=1;
-    }
-
-
-    if(direction==Direction.up){
-      verticalDirection=-1;
-    }
-    else if(direction==Direction.down){
-      verticalDirection=1;
-    }
-
-    //_emberBody.horizontalDirection=horizontalDirection;
-    //_emberBody2.horizontalDirection=horizontalDirection;
-  }
+  // void joypadMoved(Direction direction){
+  //   //print("JOYPAD EN MOVIMIENTO:   ---->  "+direction.toString());
+  //
+  //   horizontalDirection=0;
+  //   verticalDirection=0;
+  //
+  //   if(direction==Direction.left){
+  //     horizontalDirection=-1;
+  //   }
+  //   else if(direction==Direction.right){
+  //     horizontalDirection=1;
+  //   }
+  //
+  //
+  //   if(direction==Direction.up){
+  //     verticalDirection=-1;
+  //   }
+  //   else if(direction==Direction.down){
+  //     verticalDirection=1;
+  //   }
+  //
+  //   //_emberBody.horizontalDirection=horizontalDirection;
+  //   //_emberBody2.horizontalDirection=horizontalDirection;
+  // }
 
 }
