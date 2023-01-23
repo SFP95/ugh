@@ -70,13 +70,13 @@
 </data>
  </layer>
  <group id="3" name="objreem">
-  <objectgroup id="9" name="posinitplayer2" offsetx="-12" offsety="-57">
+  <objectgroup id="9" name="posinitplayer2" offsetx="3.15152" offsety="-2.45455">
    <object id="32" x="1200" y="556">
     <point/>
    </object>
   </objectgroup>
-  <objectgroup id="6" name="posinitplayer" offsetx="-1" offsety="-47">
-   <object id="11" x="78.683" y="551.085">
+  <objectgroup id="6" name="posinitplayer" offsetx="2.0303" offsety="1.48485">
+   <object id="11" x="84.683" y="474.085">
     <point/>
    </object>
   </objectgroup>
