@@ -33,7 +33,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     emberPlayer2=EmberPlayer(position: Vector2.zero());
     emberPlayer2.size=size;
     add(emberPlayer2);
-    renderBody=true;
+    renderBody=false;
 
     //game.overlays.addEntry('Joypad', (_, game) => Joypad(onDirectionChanged:joypadMoved));
 

@@ -9,6 +9,7 @@ import 'package:ugh/elements/StarElement.dart';
 import 'package:ugh/players/EmberPlayer.dart';
 import 'package:ugh/players/GotaPlayer.dart';
 
+import '../bodies/GotaBody.dart';
 import '../bodies/SueloBody.dart';
 import '../overlays/hud.dart';
 import '../players/EmberPlayer2.dart';
@@ -92,7 +93,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     }
 
     for (final gota in gotas!.objects) {
-      GotaBody gotaComponent = GotaBody(posxY: Vector2(gota.x-1, gota.y),tamWH: Vector2(64,64));
+      GotaBody gotaComponent = GotaBody(posXY: Vector2(gota.x-1, gota.y),tamWH: Vector2(64,64));
       //objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }

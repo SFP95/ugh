@@ -19,7 +19,8 @@ class GotaBody extends BodyComponent<UghGame>{
   @override
   Body createBody() {
     // TODO: implement createBody
-    BodyDef bodyDef = BodyDef(type: BodyType.dynamic,position: posXY);
+    //posXY.add(Vector2(0, -240));
+    BodyDef bodyDef = BodyDef(type: BodyType.dynamic,position: posXY,gravityOverride: Vector2(0,0));
     Body cuerpo=world.createBody(bodyDef);
     CircleShape shape=CircleShape();
     shape.radius=tamWH.x/2;
@@ -31,13 +32,14 @@ class GotaBody extends BodyComponent<UghGame>{
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
+    renderBody=true;
     await super.onLoad();
 
     GotaPlayer gotaPlayer=GotaPlayer(position: Vector2.zero(), size: tamWH);
     add(gotaPlayer);
 
     xIni=posXY.x;
-    xFin=(40);
+    xFin=(10);
     xContador=0;
 
   }
@@ -46,14 +48,16 @@ class GotaBody extends BodyComponent<UghGame>{
   void update(double dt) {
     // TODO: implement update
     super.update(dt);
+    //print("------------>>>>>>>>>>>>>> !!!!!! "+this.toString());
+    //center.add(Vector2(-1,0));
 
     if(dAnimDireccion<0){
-      xContador=xContador+dVelocidadAnim;
-      center.sub(Vector2(dVelocidadAnim, dVelocidadAnim));
+      xContador=xContador+1;
+      center.add(Vector2(-1,0));
     }
     else{
-      xContador=xContador+dVelocidadAnim;
-      center.add(Vector2(dVelocidadAnim, dVelocidadAnim));
+      xContador=xContador+1;
+      center.add(Vector2(1, 0));
     }
 
     if(xContador>xFin){
