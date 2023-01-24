@@ -75,10 +75,10 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
   @override
   Future<void> onLoad() async {
     animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('water_enemy.png'),
+      game.images.fromCache('bat.png'),
       SpriteAnimationData.sequenced(
-        amount: 2,
-        textureSize: Vector2(16,16),
+        amount: 4,
+        textureSize: Vector2(52,53),
         stepTime: 0.12,
       ),
     );
