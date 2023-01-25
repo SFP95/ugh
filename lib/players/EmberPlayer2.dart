@@ -15,7 +15,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
 
   Vector2 position;
   Vector2 size=Vector2(64, 64);
-  late EmberPlayer emberPlayer2;
+  late EmberPlayer2 emberPlayer2;
   int horizontalDirection = 0;
   int verticalDirection = 0;
   final Vector2 velocity = Vector2.zero();
@@ -30,7 +30,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
   Future<void> onLoad() async{
     // TODO: implement onLoad
     await super.onLoad();
-    emberPlayer2=EmberPlayer(position: Vector2.zero());
+    emberPlayer2=EmberPlayer2(position: Vector2.zero());
     emberPlayer2.size=size;
     add(emberPlayer2);
     renderBody=false;
@@ -137,10 +137,10 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
   @override
   Future<void> onLoad() async {
     animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('ember.png'),
+      game.images.fromCache('demonio.png'),
       SpriteAnimationData.sequenced(
-        amount: 4,
-        textureSize: Vector2(16,16),
+        amount: 2,
+        textureSize: Vector2(137,149),
         stepTime: 0.12,
       ),
     );

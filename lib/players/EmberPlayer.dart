@@ -107,7 +107,8 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     center.add((velocity * dt));
 
     if (horizontalDirection < 0 && emberPlayer.scale.x > 0) {
-      emberPlayer.flipHorizontallyAroundCenter();
+      //emberPlayer.flipHorizontallyAroundCenter();
+      emberPlayer.flipHorizontally();
     } else if (horizontalDirection > 0 && emberPlayer.scale.x < 0) {
       //flipAxisDirection(AxisDirection.left);
       emberPlayer.flipHorizontallyAroundCenter();
@@ -137,10 +138,10 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
   @override
   Future<void> onLoad() async {
     animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('ember.png'),
+      game.images.fromCache('hormiga.png'),
       SpriteAnimationData.sequenced(
-        amount: 4,
-        textureSize: Vector2(16,16),
+        amount: 2,
+        textureSize: Vector2(80,69),
         stepTime: 0.12,
       ),
     );
