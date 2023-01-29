@@ -32,7 +32,7 @@ class GotaBody extends BodyComponent<UghGame>{
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
-    renderBody=true;
+    renderBody=false;
     await super.onLoad();
 
     GotaPlayer gotaPlayer=GotaPlayer(position: Vector2.zero(), size: tamWH);
@@ -52,12 +52,12 @@ class GotaBody extends BodyComponent<UghGame>{
     //center.add(Vector2(-1,0));
 
     if(dAnimDireccion<0){
-      xContador=xContador+1;
-      center.add(Vector2(-1,0));
+      xContador=xContador+dVelocidadAnim;
+      center.sub(Vector2(dVelocidadAnim,dVelocidadAnim));
     }
     else{
-      xContador=xContador+1;
-      center.add(Vector2(1, 0));
+      xContador=xContador+dVelocidadAnim;
+      center.add(Vector2(dVelocidadAnim,dVelocidadAnim));
     }
 
     if(xContador>xFin){

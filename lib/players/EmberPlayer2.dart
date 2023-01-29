@@ -101,7 +101,10 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
     velocity.y = verticalDirection * moveSpeed;
     velocity.y += -1 * jumpSpeed;
 
-    center.add((velocity * dt));
+    //center.add((velocity * dt));
+
+    body.applyLinearImpulse(velocity*dt);
+    body.applyAngularImpulse(3);
 
     if (horizontalDirection < 0 && emberPlayer2.scale.x > 0) {
 

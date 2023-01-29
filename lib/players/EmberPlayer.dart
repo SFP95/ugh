@@ -41,7 +41,9 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
   Body createBody() {
     // TODO: implement createBody
     BodyDef definicionCuerpo= BodyDef(
-        position: position,type: BodyType.dynamic,fixedRotation: true);
+        position: position,
+        type: BodyType.dynamic,
+        fixedRotation: true);
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
@@ -59,11 +61,13 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     return cuerpo;
   }
 
-  // @override
-  // void onMount() {
-  //   super.onMount();
-  //   camera.followBodyComponent(this);
-  // }
+  //ESTO ES LA CAMARA:
+
+    // @override
+    // void onMount() {
+    //   super.onMount();
+    //   camera.followBodyComponent(this);
+    // }
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -104,7 +108,10 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler{
     velocity.y = verticalDirection * moveSpeed;
     velocity.y += -1 * jumpSpeed;
 
-    center.add((velocity * dt));
+    //center.add((velocity * dt));
+
+    body.applyLinearImpulse(velocity*dt);
+    body.applyAngularImpulse(3);
 
     if (horizontalDirection < 0 && emberPlayer.scale.x > 0) {
       //emberPlayer.flipHorizontallyAroundCenter();
