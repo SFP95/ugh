@@ -42,7 +42,9 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
       'water_enemy.png',
       'bat.png',
       'demonio.png',
-      'hormiga.png'
+      'hormiga.png',
+      'key.png',
+      'health.png'
     ]);
 
     //carcago de mapa
