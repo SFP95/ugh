@@ -24,8 +24,8 @@ class HeartHealthComponent extends SpriteGroupComponent<HeartState> with HasGame
   Future<void> onLoad() async {
     await super.onLoad();
     final availableSprite = await game.loadSprite(
-      'heart.png',
-      srcSize: Vector2.all(32),
+      'health.png',
+      srcSize: Vector2(260,207),
     );
 
     final unavailableSprite = await game.loadSprite(

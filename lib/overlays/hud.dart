@@ -34,12 +34,12 @@ class Hud extends PositionComponent with HasGameRef<UghGame> {
     );
     add(_scoreTextComponent);
 
-    final starSprite = await game.loadSprite('star.png');
+    final starSprite = await game.loadSprite('goldenkey.png');
     add(
       SpriteComponent(
         sprite: starSprite,
         position: Vector2(game.size.x - 100, 20),
-        size: Vector2.all(32),
+        size: Vector2(70,54),
         anchor: Anchor.center,
       ),
     );
