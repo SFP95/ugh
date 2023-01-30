@@ -34,6 +34,8 @@ class Hud extends PositionComponent with HasGameRef<UghGame> {
     );
     add(_scoreTextComponent);
 
+    //contador llaves
+
     final starSprite = await game.loadSprite('goldenkey.png');
     add(
       SpriteComponent(
@@ -43,6 +45,8 @@ class Hud extends PositionComponent with HasGameRef<UghGame> {
         anchor: Anchor.center,
       ),
     );
+
+    //contador vidas
 
     for (var i = 1; i <= game.health; i++) {
       final positionX = 40 * i;

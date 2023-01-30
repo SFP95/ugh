@@ -55,6 +55,8 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     return const Color.fromARGB(255, 173, 223, 247);
   }
 
+
+  //Cuando la vida lleva a cero el juego acaba
   @override
   void update(double dt) {
     if (health<=0){
@@ -79,6 +81,8 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     ObjectGroup? posinitplayer2 = mapComponent.tileMap.getLayer<ObjectGroup>("posinitplayer2");
     ObjectGroup? suelos = mapComponent.tileMap.getLayer<ObjectGroup>("suelos");
 
+
+    //incluimos los suelos
     for(final suelo in suelos!.objects){
       SueloBody body=SueloBody(tiledBody: suelo);
       add(body);
