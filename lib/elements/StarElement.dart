@@ -1,12 +1,10 @@
-import 'dart:html';
 
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame_forge2d/flame_forge2d.dart';
 import '../game/UghGame.dart';
 
 
-class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
+class StarBody extends BodyComponent<UghGame> with ContactCallbacks{
   Vector2 tamWH;
   Vector2 posXY;
 
@@ -29,7 +27,7 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
-    renderBody=true;
+    renderBody=false;
     await super.onLoad();
 
     StarElement starElement=StarElement(position: Vector2.zero());
@@ -64,14 +62,14 @@ class StarElement extends SpriteAnimationComponent with HasGameRef<UghGame> {
     )
     );
 
-    @override
-    void update(double dt) {
-      super.update(dt);
-
-      if ( game.health <= 0) {
-        removeFromParent();
-      }
-    }
+    // @override
+    // void update(double dt) {
+    //   super.update(dt);
+    //
+    //   if ( game.health <= 0) {
+    //     removeFromParent();
+    //   }
+    // }
   }
 
 }

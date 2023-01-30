@@ -6,7 +6,7 @@ import 'package:flame_forge2d/flame_forge2d.dart';
 import '../game/UghGame.dart';
 import '../players/GotaPlayer.dart';
 
-class GotaBody extends BodyComponent<UghGame> with CollisionCallbacks{
+class GotaBody extends BodyComponent<UghGame> with ContactCallbacks{
   Vector2 posXY;
   Vector2 tamWH;
   double xIni=0;

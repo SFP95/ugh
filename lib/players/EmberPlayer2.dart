@@ -12,7 +12,7 @@ import '../elements/StarElement.dart';
 import 'EmberPlayer.dart';
 import 'GotaPlayer.dart';
 
-class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,CollisionCallbacks{
+class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,ContactCallbacks{
 
   Vector2 position;
   Vector2 size=Vector2(64, 64);

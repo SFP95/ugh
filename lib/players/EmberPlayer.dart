@@ -8,11 +8,9 @@ import 'package:ugh/game/UghGame.dart';
 import 'package:ugh/players/EmberPlayer2.dart';
 import '../bodies/GotaBody.dart';
 import '../elements/StarElement.dart';
-import '../ux/joypad.dart';
-import 'GotaPlayer.dart';
 
 
-class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,CollisionCallbacks{
+class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,ContactCallbacks{
   Vector2 position;
   Vector2 size=Vector2(64, 64);
   late EmberPlayer emberPlayer;
