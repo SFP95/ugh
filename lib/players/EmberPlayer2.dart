@@ -7,11 +7,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:ugh/game/UghGame.dart';
 
+import '../bodies/GotaBody.dart';
 import '../elements/StarElement.dart';
 import 'EmberPlayer.dart';
 import 'GotaPlayer.dart';
 
-class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler{
+class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,CollisionCallbacks{
 
   Vector2 position;
   Vector2 size=Vector2(64, 64);
@@ -158,7 +159,9 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
 
 
   @override
-  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+  // void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+  void beginContact(Object other, Contact contact){
+
     print("DEBUG: COLLISION EMBER - 2!!!!!!! ");
 
     if (other is StarElement) {
@@ -166,14 +169,14 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
       game.starsCollected++;
     }
 
-    if (other is GotaPlayer) {
+    if (other is GotaBody) {
       hit();
     }
 
-    if(other is EmberPlayer){
+    if(other is EmberBody){
       hit();
     }
-    super.onCollision(intersectionPoints, other);
+    //super.onCollision(intersectionPoints, other);
   }
 
   void hit() {
