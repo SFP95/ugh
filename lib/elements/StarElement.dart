@@ -1,6 +1,39 @@
+import 'dart:html';
+
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_forge2d/flame_forge2d.dart';
 import '../game/UghGame.dart';
+
+
+class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
+  Vector2 tamWH;
+  Vector2 posXY;
+
+  StarBody({required this.tamWH,required this.posXY}):super();
+
+    @override
+    Body createBody() {
+      // TODO: implement createBody
+      //posXY.add(Vector2(0, -240));
+      BodyDef bodyDef = BodyDef(type: BodyType.dynamic,position: posXY,gravityOverride: Vector2(0,0));
+      Body cuerpo=world.createBody(bodyDef);
+      CircleShape shape=CircleShape();
+      shape.radius=tamWH.x/2;
+      // userData: this, // To be able to determine object in collision
+      cuerpo.createFixtureFromShape(shape);
+      return cuerpo;
+    }
+  @override
+  Future<void> onLoad() async{
+    // TODO: implement onLoad
+    renderBody=false;
+    await super.onLoad();
+
+    StarElement starElement=StarElement(position: Vector2.zero());
+    add(starElement);
+  }
+}
 
 class StarElement extends SpriteComponent with HasGameRef<UghGame> {
 
