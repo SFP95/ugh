@@ -44,7 +44,8 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,CollisionCal
     BodyDef definicionCuerpo= BodyDef(
         position: position,
         type: BodyType.dynamic,
-        fixedRotation: true);
+        fixedRotation: true,
+        userData: this);
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
@@ -62,13 +63,6 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,CollisionCal
     return cuerpo;
   }
 
-  //ESTO ES LA CAMARA:
-
-    // @override
-    // void onMount() {
-    //   super.onMount();
-    //   camera.followBodyComponent(this);
-    // }
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -130,39 +124,10 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,CollisionCal
     super.update(dt);
   }
 
-}
-
-
-
-class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler, CollisionCallbacks {
-
-  EmberPlayer({
-    required super.position,
-  }) : super(size: Vector2.all(64), anchor: Anchor.center);
-
   late CircleHitbox hitbox;
+
   bool hitByEnemy = false;
 
-  @override
-  Future<void> onLoad() async {
-    animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('hormiga.png'),
-      SpriteAnimationData.sequenced(
-        amount: 2,
-        textureSize: Vector2(80,69),
-        stepTime: 0.12,
-      ),
-    );
-
-    //cuerpo para colisiones
-    //   hitbox=CircleHitbox();
-    //   add(hitbox);
-  }
-
-  //DETECCION DE COLISIONES
-
-  @override
-  // void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
   void beginContact(Object other, Contact contact){
 
     print("DEBUG: COLLISION EMBER - 2!!!!!!! ");
@@ -173,10 +138,12 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
     }
 
     if (other is GotaBody) {
+      print("GOLPE!!!!");
       hit();
     }
 
     if(other is EmberBody2){
+      print("DEBUG: COLLISION CON EMBER !!!!!!! ");
       hit();
     }
     //super.onCollision(intersectionPoints, other);
@@ -200,6 +167,33 @@ class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,Keyb
 
     }
   }
-
 }
 
+
+
+class EmberPlayer extends SpriteAnimationComponent with HasGameRef<UghGame>,KeyboardHandler, CollisionCallbacks {
+
+  EmberPlayer({
+    required super.position,
+  }) : super(size: Vector2.all(64), anchor: Anchor.center);
+
+
+  @override
+  Future<void> onLoad() async {
+    animation = SpriteAnimation.fromFrameData(
+      game.images.fromCache('hormiga.png'),
+      SpriteAnimationData.sequenced(
+        amount: 2,
+        textureSize: Vector2(80, 69),
+        stepTime: 0.12,
+      ),
+    );
+
+    //cuerpo para colisiones
+    //   hitbox=CircleHitbox();
+    //   add(hitbox);
+  }
+
+
+
+}

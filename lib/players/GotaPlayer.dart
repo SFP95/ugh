@@ -85,7 +85,7 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
     );
 
     //movimiento del enemigo
-    // add(RectangleHitbox()..collisionType = CollisionType.passive);
+     add(RectangleHitbox()..collisionType = CollisionType.passive);
     // add(
     //   MoveEffect.by(
     //     Vector2(-1 * size.x, 0),
@@ -96,5 +96,13 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
     //     ),
     //   ),
     // );
+  }
+  @override
+  void update(double dt) {
+    // TODO: implement update
+    super.update(dt);
+    if ( game.health <=0){
+      removeFromParent();
+    }
   }
 }

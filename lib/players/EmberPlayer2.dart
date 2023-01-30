@@ -44,7 +44,10 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,CollisionCa
   Body createBody() {
     // TODO: implement createBody
     BodyDef definicionCuerpo= BodyDef(
-        position: position,type: BodyType.dynamic,fixedRotation: true);
+        position: position,
+        type: BodyType.dynamic,
+        fixedRotation: true,
+        userData: this);
     Body cuerpo= world.createBody(definicionCuerpo);
 
     final shape=CircleShape();
@@ -60,11 +63,6 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,CollisionCa
     return cuerpo;
   }
 
-  // @override
-  // void onMount() {
-  //   super.onMount();
-  //   camera.followBodyComponent(this);
-  // }
 
   @override
   bool onKeyEvent(RawKeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
@@ -125,6 +123,49 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,CollisionCa
     super.update(dt);
   }
 
+
+  late CircleHitbox hitbox;
+
+  bool hitByEnemy = false;
+
+  void beginContact(Object other, Contact contact){
+
+    print("DEBUG: COLLISION EMBER - 2!!!!!!! ");
+
+    if (other is StarBody) {
+      other.removeFromParent();
+      game.starsCollected++;
+    }
+
+    if (other is GotaBody) {
+      print("GOLPE!!!!");
+      hit();
+    }
+
+    if(other is EmberBody){
+      hit();
+    }
+    //super.onCollision(intersectionPoints, other);
+  }
+
+  void hit() {
+    if (!hitByEnemy) {
+      hitByEnemy = true;
+      game.health--;
+      add(
+        OpacityEffect.fadeOut(
+          EffectController(
+            alternate: true,
+            duration: 0.1,
+            repeatCount: 6,
+          ),
+        )..onComplete = () {
+          hitByEnemy = false;
+        },
+      );
+
+    }
+  }
 }
 
 

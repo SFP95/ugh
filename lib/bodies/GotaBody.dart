@@ -21,7 +21,11 @@ class GotaBody extends BodyComponent<UghGame> with CollisionCallbacks{
   Body createBody() {
     // TODO: implement createBody
     //posXY.add(Vector2(0, -240));
-    BodyDef bodyDef = BodyDef(type: BodyType.dynamic,position: posXY,gravityOverride: Vector2(0,0));
+    BodyDef bodyDef = BodyDef(
+        type: BodyType.dynamic,
+        position: posXY,
+        gravityOverride: Vector2(0,0),
+        userData: this);
     Body cuerpo=world.createBody(bodyDef);
     CircleShape shape=CircleShape();
     shape.radius=tamWH.x/2;
@@ -54,11 +58,11 @@ class GotaBody extends BodyComponent<UghGame> with CollisionCallbacks{
 
     if(dAnimDireccion<0){
       xContador=xContador+dVelocidadAnim;
-      center.sub(Vector2(dVelocidadAnim,dVelocidadAnim));
+      center.sub(Vector2(dVelocidadAnim,0));
     }
     else{
       xContador=xContador+dVelocidadAnim;
-      center.add(Vector2(dVelocidadAnim,dVelocidadAnim));
+      center.add(Vector2(dVelocidadAnim,0));
     }
 
     if(xContador>xFin){

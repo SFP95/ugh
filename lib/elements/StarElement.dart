@@ -16,7 +16,11 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
     Body createBody() {
       // TODO: implement createBody
       //posXY.add(Vector2(0, -240));
-      BodyDef bodyDef = BodyDef(type: BodyType.static,position: posXY,gravityOverride: Vector2(0,0));
+      BodyDef bodyDef = BodyDef(
+          type: BodyType.static,
+          position: posXY,
+          gravityOverride: Vector2(0,0),
+          userData: this);
       Body cuerpo=world.createBody(bodyDef);
       CircleShape shape=CircleShape();
       shape.radius=tamWH.x/7;
@@ -27,7 +31,7 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
-    renderBody=true;
+    renderBody=false;
     await super.onLoad();
 
     StarElement starElement=StarElement(position: Vector2.zero());
@@ -59,13 +63,5 @@ class StarElement extends SpriteAnimationComponent with HasGameRef<UghGame> {
     //final Image spriteImage;
     //
   }
-/*
-  @override
-  void update(double dt) {
-    super.update(dt);
 
-    if (game.health <= 0) {
-      removeFromParent();
-    }
-  }*/
 }
