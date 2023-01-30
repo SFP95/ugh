@@ -16,10 +16,10 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
     Body createBody() {
       // TODO: implement createBody
       //posXY.add(Vector2(0, -240));
-      BodyDef bodyDef = BodyDef(type: BodyType.dynamic,position: posXY,gravityOverride: Vector2(0,0));
+      BodyDef bodyDef = BodyDef(type: BodyType.static,position: posXY,gravityOverride: Vector2(0,0));
       Body cuerpo=world.createBody(bodyDef);
       CircleShape shape=CircleShape();
-      shape.radius=tamWH.x/2;
+      shape.radius=tamWH.x/7;
       // userData: this, // To be able to determine object in collision
       cuerpo.createFixtureFromShape(shape);
       return cuerpo;

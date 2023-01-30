@@ -34,18 +34,13 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
   Future<void> onLoad() async {
     await super.onLoad();
     await images.loadAll([
-      'block.png',
-      'ember.png',
-      'heart_half.png',
-      'heart.png',
-      'star.png',
-      'water_enemy.png',
       'bat.png',
       'demonio.png',
       'hormiga.png',
       'key.png',
       'goldenkey.png',
       'health.png',
+      'health_half.png',
       'angrybird.png'
     ]);
 

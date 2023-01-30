@@ -29,7 +29,7 @@ class HeartHealthComponent extends SpriteGroupComponent<HeartState> with HasGame
     );
 
     final unavailableSprite = await game.loadSprite(
-      'heart_half.png',
+      'health_half.png',
       srcSize: Vector2.all(32),
     );
 
