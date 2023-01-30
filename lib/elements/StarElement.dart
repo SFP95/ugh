@@ -15,7 +15,6 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
     @override
     Body createBody() {
       // TODO: implement createBody
-      //posXY.add(Vector2(0, -240));
       BodyDef bodyDef = BodyDef(
           type: BodyType.static,
           position: posXY,
@@ -24,25 +23,32 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
       Body cuerpo=world.createBody(bodyDef);
       CircleShape shape=CircleShape();
       shape.radius=tamWH.x/7;
-      // userData: this, // To be able to determine object in collision
       cuerpo.createFixtureFromShape(shape);
       return cuerpo;
     }
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
-    renderBody=false;
+    renderBody=true;
     await super.onLoad();
 
     StarElement starElement=StarElement(position: Vector2.zero());
     add(starElement);
+  }
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    if ( game.health <= 0) {
+      removeFromParent();
+    }
   }
 }
 
 class StarElement extends SpriteAnimationComponent with HasGameRef<UghGame> {
 
   StarElement({required super.position})
-      : super(size: Vector2.all(64), anchor: Anchor.bottomLeft);
+      : super(size: Vector2.all(64), anchor: Anchor.center);
 
 
   @override
@@ -58,10 +64,14 @@ class StarElement extends SpriteAnimationComponent with HasGameRef<UghGame> {
     )
     );
 
-    //add(RectangleHitbox()..collisionType = CollisionType.passive);
+    @override
+    void update(double dt) {
+      super.update(dt);
 
-    //final Image spriteImage;
-    //
+      if ( game.health <= 0) {
+        removeFromParent();
+      }
+    }
   }
 
 }

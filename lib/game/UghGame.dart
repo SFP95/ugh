@@ -125,6 +125,8 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     initializeGame(false);
   }
 
+
+
   // PARA PODER MOVERLO CON EL JOYPAD
 
   // void joypadMoved(Direction direction){
