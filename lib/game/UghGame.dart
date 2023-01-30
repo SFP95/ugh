@@ -92,9 +92,9 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
 
     // posición de los enemigos y estrellas
     for (final estrella in estrellas!.objects) {
-      StarElement estrellaComponent = StarElement(
-          position: Vector2(estrella.x, estrella.y));
-      objetosVisuales.add(estrellaComponent);
+      StarBody estrellaComponent = StarBody(
+          posXY: Vector2(estrella.x, estrella.y), tamWH: Vector2(143,110));
+      // objetosVisuales.add(estrellaComponent);
       add(estrellaComponent);
     }
 

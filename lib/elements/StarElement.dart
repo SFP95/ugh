@@ -27,7 +27,7 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
   @override
   Future<void> onLoad() async{
     // TODO: implement onLoad
-    renderBody=false;
+    renderBody=true;
     await super.onLoad();
 
     StarElement starElement=StarElement(position: Vector2.zero());
@@ -35,7 +35,7 @@ class StarBody extends BodyComponent<UghGame> with CollisionCallbacks{
   }
 }
 
-class StarElement extends SpriteComponent with HasGameRef<UghGame> {
+class StarElement extends SpriteAnimationComponent with HasGameRef<UghGame> {
 
   StarElement({required super.position})
       : super(size: Vector2.all(64), anchor: Anchor.bottomLeft);
@@ -45,10 +45,16 @@ class StarElement extends SpriteComponent with HasGameRef<UghGame> {
   Future<void>? onLoad() async {
     await super.onLoad();
 
-    final platformImage = game.images.fromCache('star.png');
-    sprite = Sprite(platformImage);
+    animation = SpriteAnimation.fromFrameData(
+        game.images.fromCache('key.png'),
+    SpriteAnimationData.sequenced(
+      amount: 2,
+      textureSize: Vector2(143,110),
+      stepTime: 0.12,
+    )
+    );
 
-    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    //add(RectangleHitbox()..collisionType = CollisionType.passive);
 
     //final Image spriteImage;
     //
