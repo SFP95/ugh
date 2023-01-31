@@ -29,7 +29,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
   late EmberBody _emberBody;
   late EmberBody2 _emberBody2;
 
-  List<PositionComponent>  objetosVisuales=[];
+  List<Component> objetosVisuales = [];
 
   UghGame():super(zoom: 1.1);
 
@@ -95,13 +95,13 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     for (final estrella in estrellas!.objects) {
       StarBody estrellaComponent = StarBody(
           posXY: Vector2(estrella.x, estrella.y), tamWH: Vector2(143,110));
-      // objetosVisuales.add(estrellaComponent);
+      objetosVisuales.add(estrellaComponent);
       add(estrellaComponent);
     }
 
     for (final gota in gotas!.objects) {
       GotaBody gotaComponent = GotaBody(posXY: Vector2(gota.x-1, gota.y),tamWH: Vector2(64,64));
-      //objetosVisuales.add(gotaComponent);
+      objetosVisuales.add(gotaComponent);
       add(gotaComponent);
     }
 
@@ -110,12 +110,14 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     add(_emberBody);
     // EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     // add(emberPlayer);
+    objetosVisuales.add(_emberBody);
 
 
     _emberBody2= EmberBody2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     add(_emberBody2);
     // EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     // add(emberPlayer2);
+    objetosVisuales.add(_emberBody2);
 
 
 
@@ -131,6 +133,10 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     starsCollectedEmber2=0;
     healthEmber=3;
     healthEmber2=3;
+    for(Component comp in objetosVisuales){
+    remove(comp);
+    }
+    objetosVisuales.clear();
     initializeGame(false);
   }
 
