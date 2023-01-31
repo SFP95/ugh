@@ -200,7 +200,6 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
 
 
   @override
-  // void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
   void beginContact(Object other, Contact contact){
 
     print("DEBUG: COLLISION EMBER - 2!!!!!!! ");
