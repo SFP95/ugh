@@ -29,8 +29,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
   late EmberBody _emberBody;
   late EmberBody2 _emberBody2;
 
-  List<PositionComponent>  objetosVisuales=[];
-
+  List<Component> objetosVisuales = [];
   UghGame():super(zoom: 1.1);
 
   @override
@@ -110,12 +109,16 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     add(_emberBody);
     // EmberPlayer emberPlayer= EmberPlayer(position: Vector2(posinitplayer!.objects.first.x,posinitplayer!.objects.first.y));
     // add(emberPlayer);
+    objetosVisuales.add(_emberBody);
+
 
 
     _emberBody2= EmberBody2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     add(_emberBody2);
     // EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     // add(emberPlayer2);
+    objetosVisuales.add(_emberBody2);
+
 
 
 
@@ -131,6 +134,10 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     starsCollectedEmber2=0;
     healthEmber=3;
     healthEmber2=3;
+    /*for(Component comp in objetosVisuales){
+      remove(comp);
+    }
+    objetosVisuales.clear();*/
     initializeGame(false);
   }
 
