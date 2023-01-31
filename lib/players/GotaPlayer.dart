@@ -101,7 +101,7 @@ class GotaPlayer extends SpriteAnimationComponent with HasGameRef<UghGame> {
   void update(double dt) {
     // TODO: implement update
     super.update(dt);
-    if ( game.health <=0){
+    if ( game.healthEmber <= 0 || game.healthEmber2 <= 0){
       removeFromParent();
     }
   }

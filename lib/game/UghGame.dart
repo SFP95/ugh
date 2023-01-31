@@ -17,12 +17,15 @@ import '../ux/joypad.dart';
 
 class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollisionDetection{
   late TiledComponent mapComponent;
+
   int verticalDirection = 0;
   int horizontalDirection = 0;
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
-  int starsCollected = 0;
-  int health = 3;
+  int starsCollectedEmber = 0;
+  int starsCollectedEmber2 = 0;
+  int healthEmber = 3;
+  int healthEmber2 = 3;
   late EmberBody _emberBody;
   late EmberBody2 _emberBody2;
 
@@ -59,7 +62,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
   //Cuando la vida lleva a cero el juego acaba
   @override
   void update(double dt) {
-    if (health<=0){
+    if (healthEmber<=0 || healthEmber2<=0){
       overlays.add("GameOver");
     }
     super. update(dt);
@@ -114,14 +117,20 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
     // EmberPlayer2 emberPlayer2= EmberPlayer2(position: Vector2(posinitplayer2!.objects.first.x,posinitplayer!.objects.first.y));
     // add(emberPlayer2);
 
+
+
     if(loadHud){
-      add(Hud());
+      add(Hud(nombreJu: "Hormiga",posYCorazon: 40,posYStrella: 20,posYContador: 20,posYJugador: 20));
+      add(Hud(nombreJu: "Demonio",posYCorazon: 110,posYStrella: 60,posYContador: 60,posYJugador: 90));
+
     }
   }
 
   void reset(){
-    starsCollected=0;
-    health=3;
+    starsCollectedEmber=0;
+    starsCollectedEmber2=0;
+    healthEmber=3;
+    healthEmber2=3;
     initializeGame(false);
   }
 

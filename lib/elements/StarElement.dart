@@ -37,7 +37,7 @@ class StarBody extends BodyComponent<UghGame> with ContactCallbacks{
   void update(double dt) {
     super.update(dt);
 
-    if ( game.health <= 0) {
+    if ( game.healthEmber <= 0 || game.healthEmber2 <= 0) {
       removeFromParent();
     }
   }

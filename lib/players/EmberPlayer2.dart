@@ -114,7 +114,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,ContactCall
       //flipAxisDirection(AxisDirection.left);
     }
 
-    if (position.x < -size.x || game.health <= 0) {
+    if (position.x < -size.x || game.healthEmber2 <= 0) {
       game.setDirection(0,0);
       removeFromParent();
 
@@ -134,7 +134,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,ContactCall
 
     if (other is StarBody) {
       other.removeFromParent();
-      game.starsCollected++;
+      game.starsCollectedEmber2++;
     }
 
     if (other is GotaBody) {
@@ -151,7 +151,7 @@ class EmberBody2 extends BodyComponent<UghGame> with KeyboardHandler,ContactCall
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-      game.health--;
+      game.healthEmber2--;
       add(
         OpacityEffect.fadeOut(
           EffectController(
@@ -207,7 +207,7 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
 
     if (other is StarBody) {
       other.removeFromParent();
-      game.starsCollected++;
+      game.starsCollectedEmber2++;
     }
 
     if (other is GotaBody) {
@@ -223,7 +223,7 @@ class EmberPlayer2 extends SpriteAnimationComponent with HasGameRef<UghGame>,Key
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-      game.health--;
+      game.healthEmber2--;
       add(
         OpacityEffect.fadeOut(
           EffectController(

@@ -9,8 +9,10 @@ enum HeartState {
 
 class HeartHealthComponent extends SpriteGroupComponent<HeartState> with HasGameRef<UghGame> {
   final int heartNumber;
+  final String nombreJugador;
 
   HeartHealthComponent({
+    required this.nombreJugador,
     required this.heartNumber,
     required super.position,
     required super.size,
@@ -43,10 +45,18 @@ class HeartHealthComponent extends SpriteGroupComponent<HeartState> with HasGame
 
   @override
   void update(double dt) {
-    if (game.health < heartNumber) {
-      current = HeartState.unavailable;
-    } else {
-      current = HeartState.available;
+    if (nombreJugador=="Hormiga") {
+      if (game.healthEmber< heartNumber) {
+        current = HeartState.unavailable;
+      } else {
+        current = HeartState.available;
+      }
+    }else{
+      if (game.healthEmber2 < heartNumber) {
+        current = HeartState.unavailable;
+      } else {
+        current = HeartState.available;
+      }
     }
     super.update(dt);
   }

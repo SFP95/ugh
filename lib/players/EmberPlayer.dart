@@ -114,7 +114,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,ContactCallb
       emberPlayer.flipHorizontallyAroundCenter();
     }
 
-     if (position.x < -size.x || game.health <= 0) {
+     if (position.x < -size.x || game.healthEmber <= 0) {
        game.setDirection(0,0);
        removeFromParent();
      }
@@ -132,7 +132,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,ContactCallb
 
     if (other is StarBody) {
       other.removeFromParent();
-      game.starsCollected++;
+      game.starsCollectedEmber++;
     }
 
     if (other is GotaBody) {
@@ -150,7 +150,7 @@ class EmberBody extends BodyComponent<UghGame> with KeyboardHandler,ContactCallb
   void hit() {
     if (!hitByEnemy) {
       hitByEnemy = true;
-      game.health--;
+      game.healthEmber--;
       add(
         OpacityEffect.fadeOut(
           EffectController(
