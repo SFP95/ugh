@@ -121,7 +121,7 @@ class UghGame extends Forge2DGame with HasKeyboardHandlerComponents,HasCollision
 
     if(loadHud){
       add(Hud(nombreJu: "Hormiga",posYCorazon: 40,posYStrella: 20,posYContador: 20,posYJugador: 20));
-      add(Hud(nombreJu: "Demonio",posYCorazon: 110,posYStrella: 60,posYContador: 60,posYJugador: 90));
+      add(Hud(nombreJu: "Demonio",posYCorazon: 110,posYStrella: 60,posYContador: 90,posYJugador: 90));
 
     }
   }
